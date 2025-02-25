@@ -1,0 +1,40 @@
+.container{
+    width: 100%;
+}
+.navBar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 12rem;
+}
+
+h3 {
+    text-align: end;
+    color: #2D128A;
+}
+a{
+    text-decoration: none;
+}
+.camera{
+            width: 50vw;
+            height: 20vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid black;
+            border-radius: 12rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+}
+button{
+    margin-top: 2rem;
+    border: none;
+    font-size: 16px;
+    text-align: center;
+    color: #2D128A;
+    background-color: white;
+}
