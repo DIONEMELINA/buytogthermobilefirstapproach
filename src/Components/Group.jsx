@@ -9,7 +9,6 @@ import { useGroup } from '../purchaseContext';
 
 export default function Group() {
   const navigate = useNavigate();
-  const Group =[]
 
   const { Groups, ListOfGroup } = useGroup();
 

@@ -46,8 +46,7 @@ export default function NavBar({profile_pic}) {
         {
           isRouteOnProduct ? <MdArrowBack size={25} color='black' onClick={()=>navigate(-1)}/> : ""
         } 
-        {
-          profile_pic == null ? <div className="profile-picture"><IoPersonOutline /></div> : <div className="profile-picture" style={{ backgroundImage: `url(https://rrn24.techchantier.site/buy-together-api/storage/${profile_pic})` }}></div>
+        profile_pic ? <div className="profile-picture"><IoPersonOutline size={30}/></div>
         }
         <p style={{ color: "rgb(23, 3, 99)", fontWeight: "bold", fontSize: 23 }}>
           Unity<span style={{ color: "rgb(245, 0, 41)", fontWeight: "bold" }}>Shop</span>
