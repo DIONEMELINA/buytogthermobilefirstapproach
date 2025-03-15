@@ -1,0 +1,42 @@
+
+
+.main-section{
+    overflow-y: auto;
+    width: 100vw;
+    height: 100vh;
+}
+.background-image{
+    width: 100%;
+   max-height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 50px;
+    text-align: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: -1;
+background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/unityshop.jpg') no-repeat center center/cover;
+    color: white;
+    font-weight: bold;
+    justify-content: center;
+    
+}
+.background-image p{
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: 500px;
+}
+.home-body{
+    overflow-y: auto;
+    min-height: 100vh;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    background-color: #e3f2fd;
+}

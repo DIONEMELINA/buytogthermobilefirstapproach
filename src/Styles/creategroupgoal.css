@@ -1,0 +1,95 @@
+.main-container {
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+}
+
+.navBar {
+    display: flex;
+    gap: 80px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: 100vw;
+    padding: 25px;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100vw;
+    text-align: center;
+    height: 80px;
+}
+
+.navBar h3 {
+    font-size: 20px;
+    font-weight: 500
+}
+
+.groupgoal-body {
+    background-color: #e3f2fd;
+    padding-bottom: 80px;
+    padding-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.body-container {
+    background-color: white;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.content-container p {
+    font-weight: 200;
+    color: red;
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-top: 5px;
+    padding-left: 15px;
+}
+
+.content-container h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-left: 10px;
+    margin-top: 5px;
+    padding-left: 15px;
+
+}
+
+.content-container {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.content-container input {
+    border: none;
+    width: 100%;
+    background-color: whitesmoke;
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+}
+
+.group-goal-button {
+    margin-top: 20px;
+    border: none;
+    background-color: #0056b3;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 15px;
+}

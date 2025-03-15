@@ -1,0 +1,46 @@
+.group-button {
+    margin-top: 20px;
+    border: none;
+    background-color: #0056b3;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    width: 50%;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+.group-image img {
+    border-radius: 50%;
+    margin-bottom: 5px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    object-fit: cover;
+}
+
+.group-image {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: start;
+}
+
+.group-collection {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.divider {
+    height: 2px;
+
+    width: 100%;
+}

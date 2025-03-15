@@ -1,70 +1,99 @@
-import { useState } from 'react'
-import { IoHome,} from "react-icons/io5";
-import { MdClose } from 'react-icons/md';
-import {GiHamburgerMenu} from 'react-icons/gi'
-import { IoPersonOutline, IoLogOutOutline, IoSearchOutline, IoPeopleOutline, IoCart } from "react-icons/io5";
-import '../Styles/navBar.css'
-import assetProfile from '/images.jpg'
-export default function NavBar() {
+import { useEffect, useState} from 'react';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { MdArrowBack } from "react-icons/md";
+import { IoHome } from "react-icons/io5";
+import { IoMdClose } from "react-icons/io";
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { IoPersonOutline, IoLogOutOutline, IoSearchOutline,IoCart } from "react-icons/io5";
+import { FaUsers } from "react-icons/fa";
+import '../Styles/navBar.css';
+import { useAuth } from '../AuthenticationContext';
+
+// eslint-disable-next-line react/prop-types
+export default function NavBar({profile_pic}) {
   const [isOpen, setIsOpen] = useState(false);
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+  const [isRouteOnProduct, setIsROuteOnProduct] = useState(false)
+
+  const handleLogOut =  () => {
+    try {
+      logout();
+      navigate('/login')
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const html = document.querySelector('html');
-  html.addEventListener("click", ()=>setIsOpen(false))
+  html.addEventListener('click', () => setIsOpen(false))
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/productScreen') {
+      setIsROuteOnProduct(true);
+    } else {
+      setIsROuteOnProduct(false)
+    }
+    
+  },[location])
+
+  
+
   return (
-    <nav>
-      <div className="container">
-        <div className="container1">
-          <div className="profile-picture" style={{ backgroundImage: `url(${assetProfile})` }}>
-          </div>
-          <p style={{ color: "rgb(23, 3, 99)", fontWeight: "bold", fontSize: 23 }}>Unity<span style={{ color: "rgb(245, 0, 41)", fontWeight: "bold" }}>Shop</span></p>
-        </div>
-
-        <div className="container2">
-          <IoCart size={25} />
-          <div className="links-container" onClick={(e) => {
-            e.stopPropagation();
-          }}>
-            <div className="toggle">
-              {
-                isOpen ? (
-                  <MdClose onClick={() => setIsOpen(false)} size={50} color='green' />
-                ) : <GiHamburgerMenu onClick={(e) => {
-                  e.stopPropagation();
-                  setIsOpen(true)
-                }
-                } size={25} />
-              }
-            </div>
-            <div className={`links ${isOpen ? "responsive-toggle" : ""}`}>
-              <ul>
-                <div className="dropdown-item">
-                  <IoHome size={20} color='white'/>
-                  <li><a href="">Home</a></li>
-                </div>
-                <div className="dropdown-item">
-                  <IoPersonOutline size={20}  color='white'/>
-                  <li><a href="">Profile</a></li>
-                </div>
-                <div className="dropdown-item">
-                  <IoSearchOutline size={20} color='white' />
-                  <li><a href="">Search</a></li>
-                </div>
-                <div className="dropdown-item">
-                  <IoPeopleOutline size={20}  color='white'/>
-                  <li><a href="">Group-Goal</a></li>
-                </div>
-                <div className="dropdown-item">
-                  <IoLogOutOutline size={20} color='white' />
-                  <li><a href="">Logout</a></li>
-                </div>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-
+    <div className='header' style={{ display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+      <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+        {
+          isRouteOnProduct ? <MdArrowBack size={25} color='black' onClick={()=>navigate(-1)}/> : ""
+        } 
+        {
+          profile_pic == null ? <div className="profile-picture"><IoPersonOutline /></div> : <div className="profile-picture" style={{ backgroundImage: `url(https://rrn24.techchantier.site/buy-together-api/storage/${profile_pic})` }}></div>
+        }
+        <p style={{ color: "rgb(23, 3, 99)", fontWeight: "bold", fontSize: 23 }}>
+          Unity<span style={{ color: "rgb(245, 0, 41)", fontWeight: "bold" }}>Shop</span>
+        </p>
       </div>
-    </nav>
-      
-   
-  )
+
+      <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+        {
+          isRouteOnProduct ? <IoCart size={25} color='black'  onClick={()=>navigate('/cart')}/> :""
+        }
+        <div className="links-container" onClick={(e)=>e.stopPropagation()}>
+          <div className="toggle">
+            {isOpen ? (
+              <IoMdClose size={30} onClick={() => setIsOpen(false)} color='black' />
+            ) : (
+              <GiHamburgerMenu onClick={() => setIsOpen(true)} size={25} />
+            )}
+          </div>
+          <div className={`links ${isOpen ? "responsive-toggle" : ""}`}>
+            <ul>
+              <NavLink to="/" className="dropdown-item">
+                <IoHome size={22} color="black" />
+                <li>Home</li>
+              </NavLink>
+              <NavLink to="/profile" className="dropdown-item">
+                <IoPersonOutline size={22} color="black" />
+                <li>Profile</li>
+              </NavLink>
+              <NavLink to="/group" className="dropdown-item">
+                <FaUsers size={22} color="black" />
+                <li>Groups</li>
+              </NavLink>
+
+              <NavLink to="/search" className="dropdown-item">
+                <IoSearchOutline size={22} color="black" />
+                <li>Search</li>
+              </NavLink>
+              <div className="dropdown-item" onClick={handleLogOut}>
+                <IoLogOutOutline size={22} color="black" />
+                  <li><span style={{fontSize:"18px", color:'black', textTransform:"capitalize", fontWeight:500}}>Logout</span></li>
+                
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

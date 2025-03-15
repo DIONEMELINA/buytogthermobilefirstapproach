@@ -1,5 +1,13 @@
+import '../Styles/search.css'
+import NavBar from './NavBar'
 export default function Search() {
+  
   return (
-    <div><p>Search</p></div>
+    <div>
+      <NavBar />
+      <div>
+
+      </div>
+   </div>
   )
 }
