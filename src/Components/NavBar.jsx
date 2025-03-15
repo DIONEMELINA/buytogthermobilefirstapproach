@@ -10,7 +10,7 @@ import '../Styles/navBar.css';
 import { useAuth } from '../AuthenticationContext';
 
 // eslint-disable-next-line react/prop-types
-export default function NavBar({profile_pic}) {
+export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const { logout } = useAuth();
   const navigate = useNavigate();
@@ -46,8 +46,7 @@ export default function NavBar({profile_pic}) {
         {
           isRouteOnProduct ? <MdArrowBack size={25} color='black' onClick={()=>navigate(-1)}/> : ""
         } 
-        profile_pic ? <div className="profile-picture"><IoPersonOutline size={30}/></div>
-        }
+         <div className="profile-picture"><IoPersonOutline size={30}/></div> 
         <p style={{ color: "rgb(23, 3, 99)", fontWeight: "bold", fontSize: 23 }}>
           Unity<span style={{ color: "rgb(245, 0, 41)", fontWeight: "bold" }}>Shop</span>
         </p>

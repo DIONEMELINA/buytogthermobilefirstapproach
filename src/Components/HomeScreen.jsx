@@ -22,7 +22,7 @@ const data = [
 export default function HomeScreen() {
    const { user } = useAuth();
     const navigate = useNavigate();
-    
+
     useEffect(() => {
         if (!user) {
             navigate('/login')
@@ -31,7 +31,7 @@ export default function HomeScreen() {
   
     return (
         <section className="main-section">
-            <NavBar profile_pic={user.profile_pic} />
+            <NavBar/>
             
             <div className="home-body">
                 <div>
